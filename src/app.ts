@@ -1,54 +1,35 @@
-// enum Role {MALE, FEMALE}
+// CLASSES
 
-// const person = {
-//     name: "Emmanuel",
-//     age: 24,
-//     role: Role.FEMALE
-// }
+class Department {
+  // private id: string;
+  // public name: string;
+  private employees: string[] = [];
 
-// console.log(person.role)
-// function combine(input1: number | string, input2: number | string) {
-//   let result;
-//   if (typeof input1 === "number" && typeof input2 === "number") {
-//     result = input1 + input2;
-//   } else if (typeof input1 === 'string' && typeof input2 === 'string'){
-//     return input1.toString() + ' ' + input2.toString()
-//   }
-//   return result;
-// }
+  constructor(private readonly id: string, public name: string) {
+    // this.name = n
+  }
 
-// console.log(combine(10, 24));
-// console.log(combine("Emmanuel", "Lubwama"));
+  describe(this: Department) {
+    console.log(`Department ${this.id} is owned by ${this.name}`);
+  }
 
-function add(n1: number, n2: number) {
-  return n1 + n2;
+  addEmployees(employe: string) {
+    this.employees.push(employe);
+  }
+
+  printEmployeInfo() {
+    console.log(this.employees.length);
+    console.log(this.employees);
+  }
 }
 
-let combinedValue: (a: number, b: number) => number;
-combinedValue = add;
+const logger = new Department("d1", "Emmanuel");
+logger.describe();
 
-// console.log(combinedValue(7, 6))
-// console.log(add(8,8))
+logger.addEmployees("rex");
+logger.addEmployees("rex");
+logger.printEmployeInfo();
+// const loggerCopy = {name: 'rex',describe: logger.describe}
 
-function withCb (a: number, b: number, cb: (num: number) => void){
-  const result = a + b;
-  cb(result)
-}
-
-withCb(12, 34, (result) => {
-  console.log(result)
-})
-
-// function generateError(message: string, code: number): never {
-//   throw { message: message, ErrorCode: code };
-// }
-
-// generateError("An error occured yooo", 699)
-
-const person = {
-  name: "ema",
-  age: 78
-}
-
-const copiedPerson = { ...person }
-console.log(copiedPerson)
+// loggerCopy.describe()
+console.log(logger);
